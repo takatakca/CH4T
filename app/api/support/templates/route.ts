@@ -12,7 +12,7 @@ export async function GET(req: Request) {
 
 // { title, fr, en } — a human reply template (copied by staff; never sent by the app).
 export async function POST(req: Request) {
-  const c = await requireMerchant(req);
+  const c = await requireMerchant(req, 'base', { action: 'support.templates' });
   if (!isCtx(c)) return c;
   const b = await readJson(req);
   if (!b) return fail('JSON body required');
